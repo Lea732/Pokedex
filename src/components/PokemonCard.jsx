@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 function PokemonCard(props) {
   // Accéder au premier Pokémon du tableau pokemonList
@@ -20,5 +21,12 @@ function PokemonCard(props) {
     </figure>
   );
 }
+
+PokemonCard.propTypes = {
+  pokemon: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string,
+  }).isRequired,
+};
 
 export default PokemonCard;
