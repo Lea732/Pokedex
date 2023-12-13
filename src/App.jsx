@@ -29,30 +29,20 @@ const pokemonList = [
     },
   ];
 
-function App() {
-  const [pokemonIndex, setPokemonIndex] = useState(0);
-
-  const goToPreviousPokemon = () => {
-    if (pokemonIndex > 0) {
-      setPokemonIndex(prevIndex => prevIndex - 1);
-    }
-  };
-
-  const goToNextPokemon = () => {
-    if (pokemonIndex < pokemonList.length - 1) {
-      setPokemonIndex(prevIndex => prevIndex + 1);
-    }
-  };
+  function App() {
+    const [selectedPokemon, setSelectedPokemon] = useState(pokemonList[0]);
+  
+    const handlePokemonSelection = (pokemon) => {
+      setSelectedPokemon(pokemon);
+    };
 
   return (
     <div>
       <NavBar
-        goToPrevious={goToPreviousPokemon}
-        goToNext={goToNextPokemon}
-        pokemonIndex={pokemonIndex}
-        pokemonListLength={pokemonList.length}
+        pokemonList={pokemonList}
+        handlePokemonSelection={handlePokemonSelection}
       />
-      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+      <PokemonCard pokemon={selectedPokemon} />
     </div>
   );
 }
