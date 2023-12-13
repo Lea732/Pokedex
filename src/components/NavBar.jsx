@@ -1,16 +1,20 @@
 function NavBar(props) {
-    const { goToPrevious, goToNext, pokemonIndex, pokemonListLength }= props;
-    return (
-      <div>
-        {/* Rendu conditionnel des boutons dans le composant NavBar */}
-        {pokemonIndex > 0 && (
-          <button onClick={goToPrevious}>Précédent</button>
-        )}
-        {pokemonIndex < pokemonListLength - 1 && (
-          <button onClick={goToNext}>Suivant</button>
-        )}
-      </div>
-    );
-  }
+  const { pokemonList, handlePokemonSelection } = props;
+
+  const handlePokemonButtonClick = (pokemon) => {
+    handlePokemonSelection(pokemon);
+  };
+
+  return (
+    <div>
+      {/* Génération des boutons pour chaque Pokémon */}
+      {pokemonList.map((pokemon, index) => (
+        <button key={index} onClick={() => handlePokemonButtonClick(pokemon)}>
+          {pokemon.name}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export default NavBar
