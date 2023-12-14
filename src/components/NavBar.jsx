@@ -3,6 +3,10 @@ function NavBar(props) {
 
   const handlePokemonButtonClick = (pokemon) => {
     handlePokemonSelection(pokemon);
+
+    if (pokemon.name.toLowerCase() === "pikachu") {
+      alert("Pika Pikachu !!!");
+    }
   };
 
   return (
